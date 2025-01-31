@@ -64,4 +64,14 @@ class TaskController extends Controller
 
         return response()->noContent();
     }
+
+    public function myTaskNotification(Request $request) {
+        $tasks = Task::where('assign_to', Auth::user()->id)
+            ->orderBy('created_at','desc')
+            ->limit(25)
+            ->get()
+        ;
+
+        return TaskResource::collection($tasks);
+    }
 }
