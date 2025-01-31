@@ -13,18 +13,17 @@ return new class extends Migration
     {
         Schema::create('tasks', callback: function (Blueprint $table) {
             $table->id();
-            $table->string('name')->unique('tasks_name');
+            $table->string('title')->unique('tasks_title');
             $table->text('description')->nullable();
-            $table->dateTime('start_date')->nullable();
-            $table->dateTime('finish_date')->nullable();
             $table->dateTime('due_date')->nullable();
-            $table->bigInteger('user_id')->unsigned()->nullable();
+            $table->bigInteger('assign_to')->unsigned()->nullable();
             $table->string('status')->index('tasks_status');
             $table->timestamps();
             $table->bigInteger('created_by')->unsigned()->nullable();
             $table->bigInteger('updated_by')->unsigned()->nullable();
 
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('created_by')->references('id')->on('users');
+            $table->foreign('assign_to')->references('id')->on('users');
         });
     }
 
