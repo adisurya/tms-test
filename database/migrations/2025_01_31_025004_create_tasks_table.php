@@ -18,9 +18,12 @@ return new class extends Migration
             $table->dateTime('start_date')->nullable();
             $table->dateTime('finish_date')->nullable();
             $table->dateTime('due_date')->nullable();
-            $table->bigInteger('user_id')->unsigned();
+            $table->bigInteger('user_id')->unsigned()->nullable();
             $table->string('status')->index('tasks_status');
             $table->timestamps();
+            $table->bigInteger('created_by')->unsigned()->nullable();
+            $table->bigInteger('updated_by')->unsigned()->nullable();
+
             $table->foreign('user_id')->references('id')->on('users');
         });
     }
