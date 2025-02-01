@@ -28,6 +28,18 @@ jobs:
                 DB_USERNAME: ${{ secrets.DB_USERNAME }}
                 DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
 
+            - name: Generate .env File
+              run: |
+                echo "APP_ENV=production" >> .env
+                echo "APP_KEY=${{ secrets.APP_KEY }}" >> .env
+                echo "DB_CONNECTION=pgsql" >> .env
+                echo "DB_HOST=${{ secrets.DB_HOST }}" >> .env
+                echo "DB_PORT=5432" >> .env
+                echo "DB_DATABASE=${{ secrets.DB_DATABASE }}" >> .env
+                echo "DB_USERNAME=${{ secrets.DB_USERNAME }}" >> .env
+                echo "DB_PASSWORD=${{ secrets.DB_PASSWORD }}" >> .env
+
+
             - name: Deploy to Vercel
               run: vercel deploy --prod --token=${{ secrets.VERCEL_TOKEN }}
               env:
