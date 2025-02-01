@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Models\Task;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use App\Http\Requests\TaskRequest;
 use Illuminate\Http\Response;
@@ -37,9 +38,13 @@ class TaskController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Task $task): Task
+    public function show(Task $task): JsonResponse
     {
-        return $task;
+        $logs = $task->audits()->with('user')
+        ->orderBy('id', 'desc')
+        ->get();
+
+        return response()->json(['task' => $task, 'logs' => $logs]);
     }
 
     /**
