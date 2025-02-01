@@ -49,7 +49,7 @@ class TaskRequest extends FormRequest
         return [
             'title' => ['required', 'string', 'max:255', 'unique:tasks'],
 			'description' => 'nullable|string',
-            'assign_to' => 'nullable|number',
+            'assign_to' => 'nullable|integer',
             'due_date' => 'required|date',
             'status' => 'nullable|string',
         ];
