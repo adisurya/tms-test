@@ -52,6 +52,10 @@ class TaskController extends Controller
      */
     public function update(TaskRequest $request, Task $task): Task
     {
+        if ($task->created_by !== Auth::user()->id) {
+            return response()->json(['message'=> __('You are not authorized to delete this task')], 403);
+        }
+
         $data = $request->validated();
 
         $task->update($data);
@@ -62,7 +66,7 @@ class TaskController extends Controller
     public function destroy(Task $task): Response
     {
         if ($task->created_by !== Auth::user()->id) {
-            return response()->json(['message'=> __('You are not authorized to delete this task')]);
+            return response()->json(['message'=> __('You are not authorized to delete this task')], 403);
         }
 
         $task->delete();
