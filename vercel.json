@@ -18,7 +18,7 @@
     "env": {
         "APP_ENV": "production",
         "APP_DEBUG": "false",
-        "APP_URL": "tms-test-beige.vercel.app/api",
+        "APP_URL": "tms-test-beige.vercel.app",
 
         "CACHE_DRIVER": "array",
         "LOG_CHANNEL": "stderr",
