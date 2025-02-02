@@ -42,7 +42,7 @@ jobs:
                 echo "SESSION_LIFETIME=120" >> .env
                 echo "SESSION_ENCRYPT=false" >> .env
                 echo "SESSION_PATH=/" >> .env
-                echo "SESSION_DOMAIN=.tms-test-frontend.vercel.app" >> .env
+                echo "SESSION_DOMAIN=tms-test-frontend.vercel.app" >> .env
                 echo "SANCTUM_STATEFUL_DOMAINS=tms-test-frontend.vercel.app" >> .env
 
 
