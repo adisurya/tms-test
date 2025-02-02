@@ -43,6 +43,10 @@ jobs:
                 echo "SESSION_ENCRYPT=false" >> .env
                 echo "SESSION_PATH=/" >> .env
                 echo "SESSION_DOMAIN=.vercel.app" >> .env
+                echo "SANCTUM_STATEFUL_DOMAINS=tms-test-frontend-1tiscl4vs-adi-suryas-projects.vercel.app" >> .env
+                echo "SESSION_SECURE_COOKIE=true" >> .env
+                echo "SESSION_SAME_SITE=none" >> .env
+
 
             - name: Deploy to Vercel
               run: vercel deploy --prod --token=${{ secrets.VERCEL_TOKEN }}
