@@ -23,12 +23,6 @@
         "CACHE_DRIVER": "array",
         "LOG_CHANNEL": "stderr",
         "DB_CONNECTION": "pgsql",
-        "DB_PORT": "5432",
-        "SESSION_DRIVER": "database",
-        "SESSION_LIFETIME": "120",
-        "SESSION_ENCRYPT": "false",
-        "SESSION_PATH": "/",
-        "SESSION_DOMAIN": "null"
-
+        "DB_PORT": "5432"
     }
 }
