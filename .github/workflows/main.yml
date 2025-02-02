@@ -41,10 +41,8 @@ jobs:
                 echo "SESSION_DRIVER=cookie" >> .env
                 echo "SESSION_LIFETIME=120" >> .env
                 echo "SESSION_ENCRYPT=false" >> .env
-                echo "SESSION_PATH=/" >> .env
-                echo "SESSION_DOMAIN=.tms-test-frontend.vercel.app" >> .env
-                echo "SESSION_SECURE_COOKIE=true" >> .env
-                echo "SESSION_SAME_SITE=None" >> .env
+                echo "SESSION_DOMAIN=.vercel.app" >> .env
+                echo "SANCTUM_STATEFUL_DOMAINS=tms-test-frontend.vercel.app" >> .env
 
 
             - name: Deploy to Vercel
