@@ -44,7 +44,6 @@ jobs:
                 echo "SESSION_PATH=/" >> .env
                 echo "SESSION_DOMAIN=.tms-test-frontend.vercel.app" >> .env
                 echo "SANCTUM_STATEFUL_DOMAINS=tms-test-frontend.vercel.app" >> .env
-                echo "SESSION_SAME_SITE=none" >> .env
 
 
             - name: Deploy to Vercel
