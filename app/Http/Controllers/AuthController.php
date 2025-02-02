@@ -54,13 +54,14 @@ class AuthController extends Controller
                 'access_token' => $token,
                 'token_type' => 'Bearer',
             ],
+            'user' => $user,
         ], 200);
     }
 
     // Logout API
     public function logout(Request $request)
     {
-        $request->user()->currentAccessToken()->delete();
+        Auth::guard('web')?->logout();
 
         return response()->json(['message' => 'Logged out successfully'], 200);
     }

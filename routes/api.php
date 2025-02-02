@@ -16,7 +16,8 @@ Route::post('/login', [AuthController::class, 'login']);
 
 
 Route::middleware('auth:sanctum')->group(function () {
-    Route::get('tasks/my-tasks-notification', [TaskController::class,'myTaskNotification'])->name('tasks.my-tasks-notification');
+    Route::get('tasks/total-assign-to-me', [TaskController::class,'totalAssignToMe'])->name('tasks.total-assign-to-me');
+    Route::get('tasks/assign-to-me', [TaskController::class,'assignToMe'])->name('tasks.assign-to-me');
 
     Route::apiResource('tasks', TaskController::class);
     Route::get('users', [UserControlller::class,'index'])->name('users.index');

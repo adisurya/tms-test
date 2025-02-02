@@ -10,6 +10,7 @@ use Illuminate\Http\Response;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\TaskResource;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class TaskController extends Controller
 {
@@ -18,10 +19,26 @@ class TaskController extends Controller
      */
     public function index(Request $request)
     {
-        $tasks = Task::paginate();
+        $tasks = Task::with(['assignTo'])
+            ->orderBy('created_at', 'desc')
+            ->where('created_by', Auth::user()->id)
+            ->paginate();
 
         return TaskResource::collection($tasks);
     }
+
+    public function assignToMe(Request $request)
+    {
+        DB::table('tasks')
+        ->where('assign_to', Auth::user()->id)
+        ->update(['is_view' => 1]);
+        $tasks = Task::orderBy('created_at', 'desc')
+            ->where('assign_to', Auth::user()->id)
+            ->paginate();
+
+        return TaskResource::collection($tasks);
+    }
+
 
     /**
      * Store a newly created resource in storage.
@@ -43,6 +60,8 @@ class TaskController extends Controller
         $logs = $task->audits()->with('user')
         ->orderBy('id', 'desc')
         ->get();
+
+        $task->assignTo;
 
         return response()->json(['task' => $task, 'logs' => $logs]);
     }
@@ -74,13 +93,12 @@ class TaskController extends Controller
         return response()->noContent();
     }
 
-    public function myTaskNotification(Request $request) {
-        $tasks = Task::where('assign_to', Auth::user()->id)
-            ->orderBy('created_at','desc')
-            ->limit(25)
-            ->get()
+    public function totalAssignToMe(Request $request) {
+        $total = Task::where('assign_to', Auth::user()->id)
+            ->where('is_view', '!=', 1)
+            ->count()
         ;
 
-        return TaskResource::collection($tasks);
+        return response()->json(['total' => $total]);
     }
 }
