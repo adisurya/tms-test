@@ -61,7 +61,8 @@ class AuthController extends Controller
     // Logout API
     public function logout(Request $request)
     {
-        Auth::guard('web')?->logout();
+        // Revoke the token that was used to authenticate the current request...
+        $request->user()->currentAccessToken()->delete();
 
         return response()->json(['message' => 'Logged out successfully'], 200);
     }

@@ -156,8 +156,7 @@ return [
     |
     */
 
-    // 'domain' => env('SESSION_DOMAIN'),
-    'domain' => 'tms-test-beige.vercel.app',
+    'domain' => env('SESSION_DOMAIN'),
 
     /*
     |--------------------------------------------------------------------------
@@ -170,8 +169,7 @@ return [
     |
     */
 
-    // 'secure' => env('SESSION_SECURE_COOKIE'),
-    'secure' => true,
+    'secure' => env('SESSION_SECURE_COOKIE'),
 
     /*
     |--------------------------------------------------------------------------
@@ -201,8 +199,7 @@ return [
     |
     */
 
-    //'same_site' => env('SESSION_SAME_SITE', 'lax'),
-    'same_site' => 'none',
+    'same_site' => env('SESSION_SAME_SITE', 'lax'),
 
     /*
     |--------------------------------------------------------------------------
