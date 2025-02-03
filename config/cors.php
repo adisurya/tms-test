@@ -17,13 +17,13 @@ return [
 
     'paths' => ['api/*', 'sanctum/csrf-cookie'],
 
-    'allowed_methods' => ['*'],
+    'allowed_methods' => ['GET', 'PUT', 'POST', 'OPTIONS', 'DELETE', 'UPDATE'],
 
     'allowed_origins' => ['https://tms-test-frontend.vercel.app'],
 
     'allowed_origins_patterns' => [],
 
-    'allowed_headers' => ['*'],
+    'allowed_headers' => ['X-Requested-With, X-HTTP-Method-Override, Content-Type, Accept'],
 
     'exposed_headers' => [],
 
