@@ -156,7 +156,8 @@ return [
     |
     */
 
-    'domain' => env('SESSION_DOMAIN'),
+    // 'domain' => env('SESSION_DOMAIN'),
+    'domain' => 'tms-test-beige.vercel.app',
 
     /*
     |--------------------------------------------------------------------------
@@ -183,8 +184,7 @@ return [
     |
     */
 
-    // 'http_only' => env('SESSION_HTTP_ONLY', true),
-    'http_only' => false,
+    'http_only' => env('SESSION_HTTP_ONLY', true),
 
     /*
     |--------------------------------------------------------------------------
